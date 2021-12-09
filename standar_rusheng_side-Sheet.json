@@ -1,0 +1,26 @@
+{ "frames": {
+   "standar_rusheng_side-Sheet (Layer 1).png": {
+    "frame": { "x": 1, "y": 1, "w": 39, "h": 39 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 37, "h": 37 },
+    "sourceSize": { "w": 40, "h": 40 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.21-dev",
+  "image": "standar_rusheng_side-Sheet-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 40, "h": 40 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

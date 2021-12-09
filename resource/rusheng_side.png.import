@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/rusheng_side.png-6032aa1286eb45146f5a65ed6dc6047f.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://resource/rusheng_side.png"
+dest_files=[ "res://.import/rusheng_side.png-6032aa1286eb45146f5a65ed6dc6047f.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

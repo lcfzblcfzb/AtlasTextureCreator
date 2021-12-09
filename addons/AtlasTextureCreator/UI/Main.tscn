@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/AtlasTextureCreator/UI/Main.gd" type="Script" id=1]
+
+[node name="Main" type="Panel"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="png_dialog" type="FileDialog" parent="."]
+margin_right = 315.0
+margin_bottom = 130.0
+window_title = "Open a File or Directory"
+mode = 3
+filters = PoolStringArray( "*.png" )
+show_hidden_files = true
+
+[node name="json_dialog" type="FileDialog" parent="."]
+margin_right = 315.0
+margin_bottom = 130.0
+window_title = "Open a File or Directory"
+mode = 3
+filters = PoolStringArray( "*.json" )
+show_hidden_files = true
+
+[node name="saved_folder_dialog" type="FileDialog" parent="."]
+margin_right = 315.0
+margin_bottom = 130.0
+window_title = "Open a Directory"
+mode = 2
+show_hidden_files = true
+
+[node name="AtlasPng" type="Label" parent="."]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 58.0
+margin_bottom = 20.0
+text = "AtlasPng:"
+
+[node name="AtlasJson" type="Label" parent="."]
+margin_left = 3.0
+margin_top = 38.0
+margin_right = 61.0
+margin_bottom = 52.0
+text = "AtlasJson:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="saved_folder" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 66.0
+margin_right = 191.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 62, 10 )
+mouse_filter = 1
+text = "CLICK TO CHOOSE A FOLDER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="choose png" type="Button" parent="."]
+margin_left = 68.0
+margin_top = 4.0
+margin_right = 153.0
+margin_bottom = 24.0
+text = "choose png"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="choose json" type="Button" parent="."]
+margin_left = 68.0
+margin_top = 35.0
+margin_right = 157.0
+margin_bottom = 55.0
+text = "choose json"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="confirm" type="Button" parent="."]
+margin_left = 7.0
+margin_top = 88.0
+margin_right = 148.0
+margin_bottom = 108.0
+text = "Create Atlas Texture"
+
+[node name="chosed_png" type="Label" parent="."]
+margin_left = 170.0
+margin_top = 10.0
+margin_right = 210.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chosed_json" type="Label" parent="."]
+margin_left = 172.0
+margin_top = 37.0
+margin_right = 212.0
+margin_bottom = 51.0
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[connection signal="popup_hide" from="saved_folder_dialog" to="." method="_on_saved_folder_dialog_popup_hide"]
+[connection signal="gui_input" from="saved_folder" to="." method="_on_saved_folder_gui_input"]
+[connection signal="mouse_entered" from="saved_folder" to="." method="_on_saved_folder_mouse_entered"]
+[connection signal="pressed" from="choose png" to="." method="_on_choose_png_pressed"]
+[connection signal="pressed" from="choose json" to="." method="_on_choose_json_pressed"]
+[connection signal="pressed" from="confirm" to="." method="_on_confirm_pressed"]

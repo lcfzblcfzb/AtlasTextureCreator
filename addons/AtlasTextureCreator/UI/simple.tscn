@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Label.text = \"times out!\"
+	yield(get_tree().create_timer(1),\"timeout\")
+	$Label.text = \"times out!\"
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Button_pressed():
+	$Label.text = \"clicked!\"
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 130.0
+margin_bottom = 28.0
+text = "click!"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 45.0
+margin_top = 43.0
+margin_right = 85.0
+margin_bottom = 57.0
+text = "times out!"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -1,0 +1,176 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/standar_rusheng_side-Sheet_atlas.png-8749ea70763da49e462187cb6412dd5d.stex"
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = SubResource( 1 )
+region = Rect2( 4, 4, 37, 37 )
+margin = Rect2( 2, 2, 3, 3 )
+
+[sub_resource type="StreamTexture" id=3]
+load_path = "res://.import/standar_atalas-Sheet.png-4ef0dd8044287e567c0c3cd724196d59.stex"
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = SubResource( 3 )
+region = Rect2( 4, 4, 38, 38 )
+margin = Rect2( 2, 2, 3, 3 )
+
+[node name="rusheng" type="Node2D"]
+
+[node name="hip" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 1, 2 )
+offset = Vector2( 0, 1 )
+region_rect = Rect2( 25, 31, 10, 5 )
+__meta__ = {
+"_edit_ik_": true,
+"_editor_description_": ""
+}
+
+[node name="left_thigh" type="Sprite" parent="hip"]
+position = Vector2( 2, -2 )
+texture = SubResource( 2 )
+offset = Vector2( 1, 6 )
+region_rect = Rect2( 2, 27, 6, 12 )
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="left_leg" type="Sprite" parent="hip/left_thigh"]
+position = Vector2( 0, 7 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 6 )
+region_enabled = true
+region_rect = Rect2( 37, 2, 4, 12 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="left_foot" type="Sprite" parent="hip/left_thigh/left_leg"]
+position = Vector2( 0, 10 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 1 )
+region_enabled = true
+region_rect = Rect2( 18, 37, 4, 2 )
+__meta__ = {
+"_edit_bone_": true,
+"_editor_description_": ""
+}
+
+[node name="right_thigh" type="Sprite" parent="hip"]
+position = Vector2( -3, -1 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 5 )
+region_enabled = true
+region_rect = Rect2( 10, 27, 6, 10 )
+__meta__ = {
+"_edit_ik_": true,
+"_editor_description_": ""
+}
+
+[node name="right_leg" type="Sprite" parent="hip/right_thigh"]
+position = Vector2( -1, 5 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 7 )
+region_enabled = true
+region_rect = Rect2( 27, 15, 6, 14 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="right_foot" type="Sprite" parent="hip/right_thigh/right_leg"]
+position = Vector2( -1, 12 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 1 )
+region_enabled = true
+region_rect = Rect2( 18, 37, 4, 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="body" type="Sprite" parent="hip"]
+position = Vector2( -1, -9 )
+texture = SubResource( 4 )
+offset = Vector2( 9.53674e-07, 2 )
+region_enabled = true
+region_rect = Rect2( 2, 2, 12, 22 )
+__meta__ = {
+"_edit_ik_": true,
+"_editor_description_": ""
+}
+
+[node name="left_elbow" type="Sprite" parent="hip/body"]
+show_behind_parent = true
+position = Vector2( 2, -7 )
+texture = SubResource( 4 )
+offset = Vector2( 3, 5 )
+region_enabled = true
+region_rect = Rect2( 17, 18, 6, 12 )
+__meta__ = {
+"_edit_ik_": true,
+"_editor_description_": ""
+}
+
+[node name="left_fore_arm" type="Sprite" parent="hip/body/left_elbow"]
+position = Vector2( 4, 9 )
+texture = SubResource( 4 )
+offset = Vector2( 0, 3 )
+region_enabled = true
+region_rect = Rect2( 38, 30, 2, 6 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="left_hand" type="Sprite" parent="hip/body/left_elbow/left_fore_arm"]
+position = Vector2( -1, 6 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 1 )
+region_enabled = true
+region_rect = Rect2( 10, 39, 2, 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="right_elbow" type="Sprite" parent="hip/body"]
+position = Vector2( -1, -6 )
+texture = SubResource( 4 )
+offset = Vector2( -2, 3 )
+region_enabled = true
+region_rect = Rect2( 27, 2, 8, 10 )
+__meta__ = {
+"_edit_ik_": true,
+"_editor_description_": ""
+}
+
+[node name="right_fore_arm" type="Sprite" parent="hip/body/right_elbow"]
+position = Vector2( -4, 4 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 6 )
+region_enabled = true
+region_rect = Rect2( 35, 15, 6, 12 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="right_hand" type="Sprite" parent="hip/body/right_elbow/right_fore_arm"]
+show_behind_parent = true
+position = Vector2( -1, 12 )
+texture = SubResource( 4 )
+offset = Vector2( 1, 1 )
+region_enabled = true
+region_rect = Rect2( 18, 32, 2, 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="head" type="Sprite" parent="hip/body"]
+show_behind_parent = true
+position = Vector2( 0, -8 )
+texture = SubResource( 4 )
+offset = Vector2( 0, -5 )
+region_enabled = true
+region_rect = Rect2( 17, 2, 8, 14 )
+__meta__ = {
+"_editor_description_": ""
+}
