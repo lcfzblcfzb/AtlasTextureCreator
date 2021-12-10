@@ -1,0 +1,56 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=10 format=2]
+
+[ext_resource path="res://resource/animation/animation_tree/engaged_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=1]
+[ext_resource path="res://resource/animation/animation_tree/peace_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=2]
+
+[sub_resource type="AnimationNodeTimeSeek" id=34]
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "attack"
+
+[sub_resource type="AnimationNodeBlend2" id=8]
+
+[sub_resource type="AnimationNodeTransition" id=10]
+input_count = 3
+input_0/name = "attack"
+input_0/auto_advance = false
+input_1/name = "heavy_attack"
+input_1/auto_advance = false
+input_2/name = "idle"
+input_2/auto_advance = false
+
+[sub_resource type="AnimationNodeTransition" id=30]
+input_count = 2
+input_0/name = "engaged"
+input_0/auto_advance = false
+input_1/name = "peace"
+input_1/auto_advance = false
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "idle"
+
+[resource]
+graph_offset = Vector2( -689.402, -264.527 )
+nodes/Seek/node = SubResource( 34 )
+nodes/Seek/position = Vector2( 0, -240 )
+nodes/attack/node = SubResource( 9 )
+nodes/attack/position = Vector2( -380, -300 )
+nodes/attack_action_blend/node = SubResource( 8 )
+nodes/attack_action_blend/position = Vector2( 120, -140 )
+nodes/attack_tran/node = SubResource( 10 )
+nodes/attack_tran/position = Vector2( -200, -240 )
+nodes/engaged_bt/node = ExtResource( 1 )
+nodes/engaged_bt/position = Vector2( -340, 40 )
+nodes/engaged_tran/node = SubResource( 30 )
+nodes/engaged_tran/position = Vector2( -100, 20 )
+nodes/heavy_attack/node = SubResource( 31 )
+nodes/heavy_attack/position = Vector2( -380, -200 )
+nodes/idle/node = SubResource( 33 )
+nodes/idle/position = Vector2( -380, -100 )
+nodes/output/position = Vector2( 380, -20 )
+nodes/peace_bt/node = ExtResource( 2 )
+nodes/peace_bt/position = Vector2( -340, 140 )
+node_connections = [ "output", 0, "attack_action_blend", "attack_tran", 0, "attack", "attack_tran", 1, "heavy_attack", "attack_tran", 2, "idle", "attack_action_blend", 0, "engaged_tran", "attack_action_blend", 1, "Seek", "engaged_tran", 0, "engaged_bt", "engaged_tran", 1, "peace_bt", "Seek", 0, "attack_tran" ]

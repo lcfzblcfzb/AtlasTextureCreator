@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://StandarCharactor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resource/daoshi/left_foot.tres" type="Texture" id=2]
@@ -16,8 +16,9 @@
 [ext_resource path="res://resource/daoshi/right_thigh.tres" type="Texture" id=14]
 [ext_resource path="res://resource/daoshi/right_shank.tres" type="Texture" id=15]
 [ext_resource path="res://resource/daoshi/right_foot.tres" type="Texture" id=16]
-[ext_resource path="res://resource/animation/animation_tree/peace_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=17]
-[ext_resource path="res://resource/animation/animation_tree/engaged_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=18]
+[ext_resource path="res://CharactorAnimationTree.gd" type="Script" id=17]
+[ext_resource path="res://resource/animation/charactor_animation_tree.tres" type="AnimationNodeBlendTree" id=18]
+[ext_resource path="res://Charactor.gd" type="Script" id=19]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -1641,18 +1642,6 @@ tracks/28/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1, 13 ), Vector2( -1, 13 ), Vector2( -1, 13 ), Vector2( -1, 13 ), Vector2( -1, 13 ) ]
-}
-tracks/29/type = "value"
-tracks/29/path = NodePath("hip/right_thigh/right_shank/right_foot:rotation_degrees")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -9.62676, -19.2535, -30.0784, -9.62676 ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -3837,59 +3826,14 @@ tracks/44/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "attack"
-
-[sub_resource type="AnimationNodeBlend2" id=8]
-
-[sub_resource type="AnimationNodeTransition" id=10]
-input_count = 3
-input_0/name = "attack"
-input_0/auto_advance = false
-input_1/name = "heavy_attack"
-input_1/auto_advance = false
-input_2/name = "idle"
-input_2/auto_advance = false
-
-[sub_resource type="AnimationNodeTransition" id=30]
-input_count = 2
-input_0/name = "engaged"
-input_0/auto_advance = false
-input_1/name = "peace"
-input_1/auto_advance = false
-
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "attack"
-
-[sub_resource type="AnimationNodeAnimation" id=33]
-animation = "idle"
-
-[sub_resource type="AnimationNodeBlendTree" id=32]
-graph_offset = Vector2( -424.997, -312.154 )
-nodes/attack/node = SubResource( 9 )
-nodes/attack/position = Vector2( -380, -300 )
-nodes/attack_action_blend/node = SubResource( 8 )
-nodes/attack_action_blend/position = Vector2( 120, -140 )
-nodes/attack_tran/node = SubResource( 10 )
-nodes/attack_tran/position = Vector2( -120, -240 )
-nodes/engaged_bt/node = ExtResource( 18 )
-nodes/engaged_bt/position = Vector2( -340, 40 )
-nodes/engaged_tran/node = SubResource( 30 )
-nodes/engaged_tran/position = Vector2( -100, 20 )
-nodes/heavy_attack/node = SubResource( 31 )
-nodes/heavy_attack/position = Vector2( -380, -200 )
-nodes/idle/node = SubResource( 33 )
-nodes/idle/position = Vector2( -380, -100 )
-nodes/output/position = Vector2( 380, -20 )
-nodes/peace_bt/node = ExtResource( 17 )
-nodes/peace_bt/position = Vector2( -340, 140 )
-node_connections = [ "output", 0, "attack_action_blend", "engaged_tran", 0, "engaged_bt", "engaged_tran", 1, "peace_bt", "attack_action_blend", 0, "engaged_tran", "attack_action_blend", 1, "attack_tran", "attack_tran", 0, "attack", "attack_tran", 1, "heavy_attack", "attack_tran", 2, "idle" ]
-
 [node name="daoshi" type="Node2D"]
+position = Vector2( 73, 47 )
+script = ExtResource( 19 )
 
 [node name="hip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1, 2 )
 texture = ExtResource( 12 )
+texture_folder = ""
 
 [node name="left_thigh" parent="hip" index="0"]
 texture = ExtResource( 7 )
@@ -3948,17 +3892,19 @@ anims/run = SubResource( 18 )
 anims/walk = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 32 )
+tree_root = ExtResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/attack_action_blend/blend_amount = 1.0
-parameters/attack_tran/current = 0
-parameters/engaged_bt/BlendSpace2D/blend_position = Vector2( 0, 0 )
-parameters/engaged_bt/OneShot/active = false
+parameters/Seek/seek_position = -1.0
+parameters/attack_action_blend/blend_amount = 0.0
+parameters/attack_tran/current = 2
+parameters/engaged_bt/bs/blend_position = Vector2( 0, 0 )
+parameters/engaged_bt/shot/active = false
 parameters/engaged_bt/shot_tran/current = 0
 parameters/engaged_tran/current = 1
-parameters/peace_bt/BlendSpace2D/blend_position = Vector2( 0.995713, 0.0118203 )
-parameters/peace_bt/OneShot/active = false
+parameters/peace_bt/bs/blend_position = Vector2( 0, 0 )
+parameters/peace_bt/shot/active = false
 parameters/peace_bt/shot_tran/current = 2
+script = ExtResource( 17 )
 
 [editable path="hip"]

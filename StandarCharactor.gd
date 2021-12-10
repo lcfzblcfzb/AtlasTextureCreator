@@ -1,11 +1,11 @@
 tool
 extends Sprite
 
-export(String, DIR, GLOBAL) var texture_folder
+export(String, DIR, GLOBAL) var texture_folder :String
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	casacade_set_texture(self)	
+	if texture_folder and not texture_folder.empty():
+		casacade_set_texture(self)	
 #	cascade_set_null(self)
 	pass # Replace with function body.
 

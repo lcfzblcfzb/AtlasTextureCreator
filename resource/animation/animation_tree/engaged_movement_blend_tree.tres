@@ -43,10 +43,10 @@ blend_point_6/pos = Vector2( 1, -1 )
 triangles = PoolIntArray( 1, 2, 3, 0, 2, 3, 0, 3, 5, 3, 4, 5, 1, 3, 6, 3, 4, 6 )
 snap = Vector2( 0.19, 0.1 )
 
-[sub_resource type="AnimationNodeOneShot" id=15]
-
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "attack"
+
+[sub_resource type="AnimationNodeOneShot" id=15]
 
 [sub_resource type="AnimationNodeTransition" id=28]
 input_count = 2
@@ -56,16 +56,16 @@ input_1/name = "roll"
 input_1/auto_advance = false
 
 [resource]
-graph_offset = Vector2( -317.41, 132.5 )
+graph_offset = Vector2( -317.41, -30.0112 )
 nodes/Animation/node = SubResource( 12 )
 nodes/Animation/position = Vector2( -100, 140 )
-nodes/BlendSpace2D/node = SubResource( 6 )
-nodes/BlendSpace2D/position = Vector2( 0, -20 )
-nodes/OneShot/node = SubResource( 15 )
-nodes/OneShot/position = Vector2( 200, 20 )
+nodes/bs/node = SubResource( 6 )
+nodes/bs/position = Vector2( 0, -20 )
 nodes/output/position = Vector2( 420, 100 )
 nodes/roll/node = SubResource( 16 )
 nodes/roll/position = Vector2( -100, 260 )
+nodes/shot/node = SubResource( 15 )
+nodes/shot/position = Vector2( 200, 20 )
 nodes/shot_tran/node = SubResource( 28 )
 nodes/shot_tran/position = Vector2( 60, 180 )
-node_connections = [ "output", 0, "OneShot", "OneShot", 0, "BlendSpace2D", "OneShot", 1, "shot_tran", "shot_tran", 0, "Animation", "shot_tran", 1, "roll" ]
+node_connections = [ "output", 0, "shot", "shot_tran", 0, "Animation", "shot_tran", 1, "roll", "shot", 0, "bs", "shot", 1, "shot_tran" ]
