@@ -1,0 +1,7 @@
+[gd_resource type="AnimationNodeAnimation" load_steps=2 format=2]
+
+[ext_resource path="res://resource/animation/MyAnimationNode.gd" type="Script" id=1]
+
+[resource]
+animation = "attack"
+script = ExtResource( 1 )

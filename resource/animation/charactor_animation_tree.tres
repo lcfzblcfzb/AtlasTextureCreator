@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=10 format=2]
+[gd_resource type="AnimationNodeBlendTree" load_steps=12 format=2]
 
 [ext_resource path="res://resource/animation/animation_tree/engaged_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=1]
 [ext_resource path="res://resource/animation/animation_tree/peace_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=2]
@@ -10,6 +10,20 @@ animation = "attack"
 
 [sub_resource type="AnimationNodeBlend2" id=8]
 
+[sub_resource type="GDScript" id=36]
+script/source = "extends AnimationNodeTransition
+
+func _init():
+	
+	print(\"on init\")
+
+func process(a,b):
+	print(\"int fight tran\")
+	print(a)
+	print(b)
+	pass
+"
+
 [sub_resource type="AnimationNodeTransition" id=10]
 input_count = 3
 input_0/name = "attack"
@@ -18,6 +32,7 @@ input_1/name = "heavy_attack"
 input_1/auto_advance = false
 input_2/name = "idle"
 input_2/auto_advance = false
+script = SubResource( 36 )
 
 [sub_resource type="AnimationNodeTransition" id=30]
 input_count = 2
@@ -32,8 +47,15 @@ animation = "attack"
 [sub_resource type="AnimationNodeAnimation" id=33]
 animation = "idle"
 
+[sub_resource type="GDScript" id=35]
+script/source = "
+func process(a,b):
+	print(a)
+	pass
+"
+
 [resource]
-graph_offset = Vector2( -689.402, -264.527 )
+graph_offset = Vector2( -714.569, -196.5 )
 nodes/Seek/node = SubResource( 34 )
 nodes/Seek/position = Vector2( 0, -240 )
 nodes/attack/node = SubResource( 9 )
@@ -53,4 +75,5 @@ nodes/idle/position = Vector2( -380, -100 )
 nodes/output/position = Vector2( 380, -20 )
 nodes/peace_bt/node = ExtResource( 2 )
 nodes/peace_bt/position = Vector2( -340, 140 )
-node_connections = [ "output", 0, "attack_action_blend", "attack_tran", 0, "attack", "attack_tran", 1, "heavy_attack", "attack_tran", 2, "idle", "attack_action_blend", 0, "engaged_tran", "attack_action_blend", 1, "Seek", "engaged_tran", 0, "engaged_bt", "engaged_tran", 1, "peace_bt", "Seek", 0, "attack_tran" ]
+node_connections = [ "output", 0, "attack_action_blend", "attack_action_blend", 0, "engaged_tran", "attack_action_blend", 1, "Seek", "engaged_tran", 0, "engaged_bt", "engaged_tran", 1, "peace_bt", "Seek", 0, "attack_tran", "attack_tran", 0, "attack", "attack_tran", 1, "heavy_attack", "attack_tran", 2, "idle" ]
+script = SubResource( 35 )

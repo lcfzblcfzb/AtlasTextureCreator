@@ -56,11 +56,11 @@ input_1/name = "roll"
 input_1/auto_advance = false
 
 [resource]
-graph_offset = Vector2( 367.361, -168.568 )
+graph_offset = Vector2( -263.639, -72.568 )
 nodes/Animation/node = SubResource( 12 )
 nodes/Animation/position = Vector2( -100, 140 )
 nodes/bs/node = SubResource( 6 )
-nodes/bs/position = Vector2( -100, -140 )
+nodes/bs/position = Vector2( -100, -40 )
 nodes/output/position = Vector2( 420, 100 )
 nodes/roll/node = SubResource( 16 )
 nodes/roll/position = Vector2( -100, 260 )

@@ -61,10 +61,9 @@ func peace_attack():
 	set(ATTACK_TRAN ,0)
 
 func peace_attack_end():
-	
 	set(ATTACK_ACTION_BLEND,0)
 	set(ATTACK_TRAN,2)
-	
+		
 func _physics_process(delta):
 	
 	
