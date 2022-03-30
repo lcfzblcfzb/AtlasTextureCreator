@@ -1,9 +1,23 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://StandarCharactor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resource/animation/animation_tree/engaged_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=2]
-[ext_resource path="res://resource/animation/animation_tree/peace_movement_blend_tree.tres" type="AnimationNodeBlendTree" id=3]
+[ext_resource path="res://addons/AtlasTextureCreator/standarcharactor/StandarCharactor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resource/daoshi/left_foot.tres" type="Texture" id=2]
+[ext_resource path="res://resource/daoshi/left_upper_arm.tres" type="Texture" id=3]
+[ext_resource path="res://resource/daoshi/left_fore_arm.tres" type="Texture" id=4]
+[ext_resource path="res://resource/daoshi/left_shank.tres" type="Texture" id=5]
+[ext_resource path="res://resource/daoshi/right_fore_arm.tres" type="Texture" id=6]
+[ext_resource path="res://resource/daoshi/left_thigh.tres" type="Texture" id=7]
+[ext_resource path="res://resource/daoshi/left_hand.tres" type="Texture" id=8]
+[ext_resource path="res://resource/daoshi/body.tres" type="Texture" id=9]
+[ext_resource path="res://resource/daoshi/right_hand.tres" type="Texture" id=10]
+[ext_resource path="res://resource/daoshi/head.tres" type="Texture" id=11]
+[ext_resource path="res://resource/daoshi/hip.tres" type="Texture" id=12]
+[ext_resource path="res://resource/daoshi/right_upper_arm.tres" type="Texture" id=13]
+[ext_resource path="res://resource/daoshi/right_thigh.tres" type="Texture" id=14]
+[ext_resource path="res://resource/daoshi/right_shank.tres" type="Texture" id=15]
+[ext_resource path="res://resource/daoshi/right_foot.tres" type="Texture" id=16]
 [ext_resource path="res://CharactorAnimationTree.gd" type="Script" id=17]
+[ext_resource path="res://resource/animation/charactor_animation_tree.tres" type="AnimationNodeBlendTree" id=18]
 [ext_resource path="res://Charactor.gd" type="Script" id=19]
 
 [sub_resource type="Animation" id=1]
@@ -3812,119 +3826,58 @@ tracks/44/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="GDScript" id=40]
-script/source = "
-func process(time: float, seek: bool) :
-	print(\"int fight tran\")
-	print(time)
-	print(seek)
-	pass
-"
-
-[sub_resource type="AnimationNodeTimeSeek" id=34]
-script = SubResource( 40 )
-
-[sub_resource type="GDScript" id=38]
-script/source = "
-func _init():
-	print(\"init\")
-
-func process(a,b):
-	
-	print(\"inside animation\")
-
-"
-
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "attack"
-script = SubResource( 38 )
-
-[sub_resource type="AnimationNodeBlend2" id=8]
-
-[sub_resource type="GDScript" id=36]
-script/source = "extends AnimationNode
-
-func _init():
-	
-	print(\"tran init\")
-
-func process(time: float, seek: bool) :
-	print(\"int fight tran\")
-	print(time)
-	print(seek)
-	pass
-"
-
-[sub_resource type="AnimationNodeTransition" id=10]
-input_count = 3
-input_0/name = "attack"
-input_0/auto_advance = false
-input_1/name = "heavy_attack"
-input_1/auto_advance = false
-input_2/name = "idle"
-input_2/auto_advance = false
-script = SubResource( 36 )
-
-[sub_resource type="AnimationNodeTransition" id=30]
-input_count = 2
-input_0/name = "engaged"
-input_0/auto_advance = false
-input_1/name = "peace"
-input_1/auto_advance = false
-
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "attack"
-
-[sub_resource type="AnimationNodeAnimation" id=33]
-animation = "idle"
-
-[sub_resource type="GDScript" id=35]
-script/source = "extends AnimationNode
-
-func process(a,b):
-	print(a)
-	pass
-"
-
-[sub_resource type="AnimationNodeBlendTree" id=37]
-graph_offset = Vector2( -428.844, -233.913 )
-nodes/Seek/node = SubResource( 34 )
-nodes/Seek/position = Vector2( -20, -200 )
-nodes/attack/node = SubResource( 9 )
-nodes/attack/position = Vector2( -380, -340 )
-nodes/attack_action_blend/node = SubResource( 8 )
-nodes/attack_action_blend/position = Vector2( 120, -140 )
-nodes/attack_tran/node = SubResource( 10 )
-nodes/attack_tran/position = Vector2( -200, -240 )
-nodes/engaged_bt/node = ExtResource( 2 )
-nodes/engaged_bt/position = Vector2( -340, 40 )
-nodes/engaged_tran/node = SubResource( 30 )
-nodes/engaged_tran/position = Vector2( -100, 20 )
-nodes/heavy_attack/node = SubResource( 31 )
-nodes/heavy_attack/position = Vector2( -380, -220 )
-nodes/idle/node = SubResource( 33 )
-nodes/idle/position = Vector2( -380, -100 )
-nodes/output/position = Vector2( 380, -20 )
-nodes/peace_bt/node = ExtResource( 3 )
-nodes/peace_bt/position = Vector2( -340, 140 )
-node_connections = [ "output", 0, "attack_action_blend", "engaged_tran", 0, "engaged_bt", "engaged_tran", 1, "peace_bt", "Seek", 0, "attack_tran", "attack_action_blend", 0, "engaged_tran", "attack_action_blend", 1, "Seek", "attack_tran", 0, "attack", "attack_tran", 1, "heavy_attack", "attack_tran", 2, "idle" ]
-script = SubResource( 35 )
-
 [node name="daoshi" type="Node2D"]
 position = Vector2( 73, 47 )
 script = ExtResource( 19 )
 
 [node name="hip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 1, 2 )
+texture = ExtResource( 12 )
 texture_folder = ""
 
+[node name="left_thigh" parent="hip" index="0"]
+texture = ExtResource( 7 )
+
+[node name="left_shank" parent="hip/left_thigh" index="0"]
+texture = ExtResource( 5 )
+
+[node name="left_foot" parent="hip/left_thigh/left_shank" index="0"]
+texture = ExtResource( 2 )
+
+[node name="right_thigh" parent="hip" index="1"]
+texture = ExtResource( 14 )
+
+[node name="right_shank" parent="hip/right_thigh" index="0"]
+texture = ExtResource( 15 )
+
+[node name="right_foot" parent="hip/right_thigh/right_shank" index="0"]
+texture = ExtResource( 16 )
+
+[node name="body" parent="hip" index="2"]
+texture = ExtResource( 9 )
+
+[node name="left_upper_arm" parent="hip/body" index="0"]
+texture = ExtResource( 3 )
+
+[node name="left_fore_arm" parent="hip/body/left_upper_arm" index="0"]
+texture = ExtResource( 4 )
+
+[node name="left_hand" parent="hip/body/left_upper_arm/left_fore_arm" index="0"]
+texture = ExtResource( 8 )
+
+[node name="right_upper_arm" parent="hip/body" index="1"]
+texture = ExtResource( 13 )
+
 [node name="right_fore_arm" parent="hip/body/right_upper_arm" index="0"]
+texture = ExtResource( 6 )
 offset = Vector2( -3, -3 )
 
 [node name="right_hand" parent="hip/body/right_upper_arm/right_fore_arm" index="0"]
 position = Vector2( -1, 10 )
+texture = ExtResource( 10 )
 
 [node name="head" parent="hip/body" index="2"]
+texture = ExtResource( 11 )
 offset = Vector2( -5, -13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -3939,7 +3892,7 @@ anims/run = SubResource( 18 )
 anims/walk = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 37 )
+tree_root = ExtResource( 18 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Seek/seek_position = -1.0
