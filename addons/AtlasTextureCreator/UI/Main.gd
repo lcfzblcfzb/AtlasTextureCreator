@@ -1,15 +1,19 @@
 tool
 extends Panel
 
-var chosed_png_path="res://resource/daoshi_side-Sheet.png"
-var chosed_json_path="res://resource/daoshi_side.json"
-var saved_folder_path="res://resource/daoshi/"
+var chosed_png_path
+var chosed_json_path
+var saved_folder_path
 
 func _ready():
 	pass # Replace with function body.
 
 func _on_choose_png_pressed():
 	$chosed_json.text="clicked"
+	
+	if $json_dialog.current_dir!="":
+		$png_dialog.current_dir=$json_dialog.current_dir
+	
 	$png_dialog.popup_centered_ratio()
 	yield($png_dialog,"popup_hide")
 	chosed_png_path =$png_dialog.current_path
@@ -17,6 +21,10 @@ func _on_choose_png_pressed():
 
 func _on_choose_json_pressed():
 	$json_dialog.popup_centered_ratio()
+	
+	if $png_dialog.current_dir!="":
+		$json_dialog.current_dir=$png_dialog.current_dir
+	
 	yield($json_dialog,"popup_hide")
 	chosed_json_path =$json_dialog.current_path
 	$chosed_json.text = chosed_json_path
