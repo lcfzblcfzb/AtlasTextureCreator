@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/AtlasTextureCreator/UI/AssemblingScene.gd" type="Script" id=1]
+
+[sub_resource type="BitmapFont" id=1]
+height = 9.0
+ascent = 333.0
+distance_field = true
+
+[sub_resource type="Theme" id=2]
+/fonts/it = SubResource( 1 )
 
 [node name="AssemblingScene" type="Panel"]
 script = ExtResource( 1 )
@@ -12,9 +20,98 @@ window_title = "Open a File"
 mode = 0
 
 [node name="StandarSpriteDialogBtn" type="Button" parent="."]
-margin_right = 12.0
-margin_bottom = 20.0
-text = "choose standarsprite"
+margin_left = 183.0
+margin_top = 49.0
+margin_right = 292.0
+margin_bottom = 70.0
+text = "make template"
+align = 0
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 25.0
+margin_top = 29.0
+margin_right = 167.0
+margin_bottom = 95.0
+allow_rmb_select = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 112.0
+margin_top = 139.0
+margin_right = 362.0
+margin_bottom = 269.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_right = 240.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Panel"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 40.0
+margin_bottom = 14.0
+text = "testtest322"
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -100.0
+margin_top = 5.0
+margin_right = -2.0
+button_mask = 0
+text = "check"
+
+[node name="UseTemplateBtn" type="Button" parent="."]
+margin_left = 315.0
+margin_top = 49.0
+margin_right = 412.0
+margin_bottom = 69.0
+text = "use template"
+align = 0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 45.0
+margin_top = 10.0
+margin_right = 151.0
+margin_bottom = 25.0
+theme = SubResource( 2 )
+text = "saved template"
+
+[node name="w" type="Label" parent="."]
+margin_left = 181.0
+margin_top = 11.0
+margin_right = 491.0
+margin_bottom = 42.0
+theme = SubResource( 2 )
+text = "important: the dictionary key of  the saved template 
+is the packed animation resource folder name appended with '.tscn'"
+
+[node name="make desc" type="Label" parent="."]
+margin_left = 28.0
+margin_top = 121.0
+margin_right = 469.0
+margin_bottom = 220.0
+text = "How to make template:
+1.choose a modified standar charactor ,make sure all the sprite
+transform add offset are set to the right values.
+2.click make template to make a template out of chosed standar 
+charactor. will saved to _cached directory. identitfied by the resource
+directory name.
+
+To Use Template:
+1.click 'use template' button,choose a standarcharactor scene to 
+apply template."
 
 [connection signal="file_selected" from="StandarSpriteDialog" to="." method="_on_StandarSpriteDialog_file_selected"]
-[connection signal="pressed" from="StandarSpriteDialogBtn" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="StandarSpriteDialogBtn" to="." method="_on_StandarSpriteDialogBtn_pressed"]
+[connection signal="item_rmb_selected" from="ItemList" to="." method="_on_ItemList_item_rmb_selected"]
+[connection signal="rmb_clicked" from="ItemList" to="." method="_on_ItemList_rmb_clicked"]
+[connection signal="pressed" from="UseTemplateBtn" to="." method="_on_UseTemplateBtn_pressed"]
